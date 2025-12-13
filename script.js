@@ -2,7 +2,7 @@ ultconst SUPABASE_URL = "https://cjwkmtqpzvkpxjlfcyzg.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqd2ttdHFwenZrcHhqbGZjeXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwNDEwMDMsImV4cCI6MjA3NTYxNzAwM30.vFwABypAsnw15vMpo3_A--ayRwUkq6iQJYUXBbbQxs8";
 
 // --- OBTENER DATOS DE SUPABASE ---
-fetch(`${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery&order=fecha.desc`, {
+fetch(`${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery&order=fecha.desc, dia_noche.desc&limit=60`, {
     headers: {
         apikey: SUPABASE_KEY,
         Authorization: `Bearer ${SUPABASE_KEY}`
@@ -34,7 +34,7 @@ fetch(`${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery
                 <td>${r.dia_noche}</td>
                 <td>${r.pick3}</td>
                 <td>${r.pick4}</td>
-                 <td>${r.lottery}</td>
+                <td>${r.lottery}</td>
             </tr>
         `;
     });
@@ -47,7 +47,6 @@ fetch(`${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery
     console.error(err);
     document.getElementById("Result").innerHTML = "<p>Error cargando resultados</p>";
 });
-
 
 
 
