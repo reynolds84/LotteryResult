@@ -11,7 +11,8 @@ fetch(`${SUPABASE_URL}/rest/v1/resultados?select=*`, {
 .then(data => {
     let html = "";
     data.forEach(x => {
-        html += `<p>${x.fecha} - ${x.juego}: ${x.numeros}</p>`;
+        html += `<p>${x.fecha} - ${x.pick3}: ${x.pick4}</p>`;
     });
     document.getElementById("resultados").innerHTML = html;
 });
+
