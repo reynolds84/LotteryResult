@@ -1,8 +1,8 @@
-const SUPABASE_URL = "https://cjwkmtqpzvkpxjlfcyzg.supabase.co/rest/v1/Result";
+ultconst SUPABASE_URL = "https://cjwkmtqpzvkpxjlfcyzg.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqd2ttdHFwenZrcHhqbGZjeXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwNDEwMDMsImV4cCI6MjA3NTYxNzAwM30.vFwABypAsnw15vMpo3_A--ayRwUkq6iQJYUXBbbQxs8";
 
 // --- OBTENER DATOS DE SUPABASE ---
-fetch(`${SUPABASE_URL}/rest/v1/resultados?select=fecha,dia_noche,pick3,pick4,lottery&order=fecha.desc`, {
+fetch(`${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery&order=fecha.desc`, {
     headers: {
         apikey: SUPABASE_KEY,
         Authorization: `Bearer ${SUPABASE_KEY}`
@@ -11,7 +11,7 @@ fetch(`${SUPABASE_URL}/rest/v1/resultados?select=fecha,dia_noche,pick3,pick4,lot
 .then(res => res.json())
 .then(data => {
     if (data.length === 0) {
-        document.getElementById("resultados").innerHTML = "<p>No hay resultados todavía</p>";
+        document.getElementById("Result").innerHTML = "<p>No hay resultados todavía</p>";
         return;
     }
 
@@ -41,12 +41,13 @@ fetch(`${SUPABASE_URL}/rest/v1/resultados?select=fecha,dia_noche,pick3,pick4,lot
 
     html += "</table>";
 
-    document.getElementById("resultados").innerHTML = html;
+    document.getElementById("Result").innerHTML = html;
 })
 .catch(err => {
     console.error(err);
-    document.getElementById("resultados").innerHTML = "<p>Error cargando resultados</p>";
+    document.getElementById("Result").innerHTML = "<p>Error cargando resultados</p>";
 });
+
 
 
 
