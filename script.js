@@ -1,4 +1,4 @@
-const SUPABASE_URL = "https://cjwkmtqpzvkpxjlfcyzg.supabase.co";
+const SUPABASE_URL = "https://cjwkmtqpzvkpxjlfcyzg.supabase.co/rest/v1/Result";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqd2ttdHFwenZrcHhqbGZjeXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwNDEwMDMsImV4cCI6MjA3NTYxNzAwM30.vFwABypAsnw15vMpo3_A--ayRwUkq6iQJYUXBbbQxs8";
 
 // --- OBTENER DATOS DE SUPABASE ---
@@ -47,6 +47,7 @@ fetch(`${SUPABASE_URL}/rest/v1/resultados?select=fecha,dia_noche,pick3,pick4,lot
     console.error(err);
     document.getElementById("resultados").innerHTML = "<p>Error cargando resultados</p>";
 });
+
 
 
 
