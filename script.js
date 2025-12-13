@@ -51,3 +51,4 @@ fetch(`${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery
 
 
 
+
