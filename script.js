@@ -35,38 +35,41 @@
 <div id="resultados"></div>
 
 <script>
-// URL de tu archivo JSON en GitHub
-//const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main/resultados_fl.json";
 const jsonUrl = "https://reynolds84.github.io/LotteryResult/resultados_fl.json";
 
-// Cargar el archivo JSON desde GitHub
-fetch(jsonUrl)
-  .then(res => res.json())
-  .then(data => {
+document.getElementById("resultados").innerHTML = "Cargando resultados...";
+
+fetch(jsonUrl + "?v=" + Date.now())
+  .then(res => {
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return res.text();
+  })
+  .then(text => {
+    const data = JSON.parse(text);
     mostrarResultados(data);
   })
   .catch(err => {
-    console.error("Error al cargar el JSON", err);
-    document.getElementById("resultados").innerHTML = "<p>Error al cargar los resultados</p>";
+    console.error(err);
+    document.getElementById("resultados").innerHTML =
+      "<p>Error al cargar los resultados</p>";
   });
 
 function mostrarResultados(data) {
-  if (!data || data.length === 0) {
-    document.getElementById("resultados").innerHTML = "<p>No hay resultados disponibles</p>";
+  if (!Array.isArray(data) || data.length === 0) {
+    document.getElementById("resultados").innerHTML =
+      "<p>No hay resultados disponibles</p>";
     return;
   }
 
-  // Orden descendente por fecha y DiaNoche (Noche antes que Dia)
   data.sort((a, b) => {
-    const fechaA = new Date(a.Fecha);
-    const fechaB = new Date(b.Fecha);
-    if (fechaB - fechaA !== 0) return fechaB - fechaA;
-    if (a.DiaNoche === b.DiaNoche) return 0;
+    const fa = new Date(a.Fecha);
+    const fb = new Date(b.Fecha);
+    if (fb - fa !== 0) return fb - fa;
     return a.DiaNoche === "Noche" ? -1 : 1;
   });
 
   let html = `
-    <table border="1">
+    <table border="1" width="100%">
       <thead>
         <tr>
           <th class="fecha">Fecha</th>
@@ -78,10 +81,10 @@ function mostrarResultados(data) {
       <tbody>
   `;
 
-  data.forEach((r, index) => {
+  data.forEach((r, i) => {
     html += `
-      <tr class="${index === 0 ? 'destacado' : ''}">
-        <td>${new Date(r.Fecha).toLocaleDateString('es-ES')}</td>
+      <tr class="${i === 0 ? "destacado" : ""}">
+        <td>${new Date(r.Fecha).toLocaleDateString("es-ES")}</td>
         <td>${r.DiaNoche}</td>
         <td>${r.Pick3}</td>
         <td>${r.Pick4}</td>
@@ -93,7 +96,7 @@ function mostrarResultados(data) {
   document.getElementById("resultados").innerHTML = html;
 }
 </script>
-
 </body>
 </html>
+
 
