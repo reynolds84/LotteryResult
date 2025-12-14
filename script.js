@@ -3,13 +3,16 @@ const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main
 
 // Cargar el archivo JSON desde GitHub
 fetch(jsonUrl)
-  .then(res => res.json())
+  .then(res => {
+    console.log("Status:", res.status);
+    return res.json();
+  })
   .then(data => {
+    console.log("Data:", data);
     mostrarResultados(data);
   })
   .catch(err => {
     console.error("Error al cargar el JSON", err);
-    document.getElementById("resultados").innerHTML = "<p>Error al cargar los resultados</p>";
   });
 
 function mostrarResultados(data) {
@@ -45,6 +48,7 @@ function mostrarResultados(data) {
   html += "</tbody></table>";
   document.getElementById("resultados").innerHTML = html;
 }
+
 
 
 
