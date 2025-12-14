@@ -54,8 +54,13 @@ const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main
 
 // Cargar el archivo JSON desde GitHub
 fetch(jsonUrl)
-  .then(res => res.json())
-  .then(data => {
+  .then(res => {
+    console.log("Status:", res.status); // muestra el código HTTP
+    return res.text(); // primero ver el texto crudo
+  })
+  .then(text => {
+    console.log("Contenido recibido:", text);
+    const data = JSON.parse(text); // ahora parsea a JSON
     mostrarResultados(data);
   })
   .catch(err => {
@@ -109,6 +114,7 @@ function mostrarResultados(data) {
 
 </body>
 </html>
+
 
 
 
