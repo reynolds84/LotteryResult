@@ -1,39 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Resultados Florida</title>
-<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  th {
-    padding: 6px;
-    color: white;
-  }
-
-  th.fecha { background-color: #ff6600; }
-  th.turno { background-color: #007bff; }
-  th.pick3 { background-color: #28a745; }
-  th.pick4 { background-color: #6f42c1; }
-
-  td {
-    padding: 6px;
-    text-align: center;
-  }
-
-  tr.destacado {
-    background-color: orange;
-    color: white;
-  }
-</style>
-</head>
-<body>
-
-<div id="resultados"></div>
-
 <script>
 const jsonUrl = "https://reynolds84.github.io/LotteryResult/resultados_fl.json";
 
@@ -96,7 +60,3 @@ function mostrarResultados(data) {
   document.getElementById("resultados").innerHTML = html;
 }
 </script>
-</body>
-</html>
-
-
