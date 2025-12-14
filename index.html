@@ -162,7 +162,9 @@ function mostrarResultados(data, codigo) {
           <div class="fecha">
             ${new Date(r.Fecha).toLocaleDateString("es-ES")}
           </div>
-          <div class="turno">${r.DiaNoche}</div>
+          <div class="turno">
+  ${r.DiaNoche === "Medio" ? "Tarde" : r.DiaNoche}
+</div>
           <div></div>
           <div class="pick3">${r.Pick3 ?? "-"}</div>
           <div class="pick4">${r.Pick4 ?? "-"}</div>
@@ -177,3 +179,4 @@ function mostrarResultados(data, codigo) {
 
 </body>
 </html>
+
