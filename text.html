@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>PRUEBA FETCH</h2>
+<pre id="out">Cargando...</pre>
+
+<script>
+fetch("https://reynolds84.github.io/LotteryResult/resultados_fl.json?v=" + Date.now())
+  .then(r => r.text())
+  .then(t => {
+    document.getElementById("out").textContent = t.substring(0,500);
+  })
+  .catch(e => {
+    document.getElementById("out").textContent = e.toString();
+  });
+</script>
+
+</body>
+</html>
