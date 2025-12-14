@@ -7,11 +7,13 @@
   table {
     width: 100%;
     border-collapse: collapse;
+  text-align: center; /* Centra todo el contenido por defecto */
   }
 
   th {
     padding: 6px;
     color: white;
+    ttext-align: center; /* Centra los encabezados */
   }
 
   th.fecha { background-color: #ff6600; }
@@ -95,6 +97,7 @@ function mostrarResultados(data) {
 
 </body>
 </html>
+
 
 
 
