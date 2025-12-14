@@ -8,11 +8,14 @@
     font-family: Arial, sans-serif;
   }
 
+  /* Encabezado de la página */
   h1 {
     text-align: center;
-    color: red; /* encabezado en rojo */
+    color: red;
+    margin-top: 20px;
   }
 
+  /* Tabla */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -20,6 +23,7 @@
     margin-top: 20px;
   }
 
+  /* Encabezados con colores distintos */
   th {
     padding: 6px;
     color: white;
@@ -31,11 +35,13 @@
   th.pick3 { background-color: #28a745; }
   th.pick4 { background-color: #6f42c1; }
 
+  /* Celdas centradas */
   td {
     padding: 6px;
     text-align: center;
   }
 
+  /* Fila más reciente */
   tr.destacado {
     background-color: orange;
     color: white;
@@ -49,18 +55,16 @@
 <div id="resultados"></div>
 
 <script>
-// URL de tu archivo JSON en GitHub
-const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main/resultados_fl.json";
+// URL de tu archivo JSON ahora desde GitHub Pages
+const jsonUrl = "https://reynolds84.github.io/LotteryResult/resultados_fl.json";
 
-// Cargar el archivo JSON desde GitHub
+// Cargar el JSON
 fetch(jsonUrl)
   .then(res => {
-    console.log("Status:", res.status); // muestra el código HTTP
-    return res.text(); // primero ver el texto crudo
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    return res.json();
   })
-  .then(text => {
-    console.log("Contenido recibido:", text);
-    const data = JSON.parse(text); // ahora parsea a JSON
+  .then(data => {
     mostrarResultados(data);
   })
   .catch(err => {
@@ -68,13 +72,14 @@ fetch(jsonUrl)
     document.getElementById("resultados").innerHTML = "<p>Error al cargar los resultados</p>";
   });
 
+// Función para mostrar la tabla
 function mostrarResultados(data) {
   if (!data || data.length === 0) {
     document.getElementById("resultados").innerHTML = "<p>No hay resultados disponibles</p>";
     return;
   }
 
-  // Orden descendente por fecha y DiaNoche (Noche antes que Dia)
+  // Orden descendente por fecha y turno (Noche antes que Día)
   data.sort((a, b) => {
     const fechaA = new Date(a.Fecha);
     const fechaB = new Date(b.Fecha);
