@@ -2,104 +2,188 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Resultados Florida</title>
+<title>Resultados de Lotería</title>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+h1 {
+  text-align: center;
+  color: red;
+  font-size: 28px;
+  margin: 15px 0;
+}
 
-  th, td {
-    padding: 6px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
+/* MENÚ */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
 
-  th.fecha  { background-color: #ff6600; color: white; }
-  th.turno  { background-color: #007bff; color: white; }
-  th.pick3  { background-color: #28a745; color: white; }
-  th.pick4  { background-color: #6f42c1; color: white; }
+.menu button {
+  padding: 12px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
 
-  tr.destacado {
-    background-color: orange;
-    color: white;
-    font-weight: bold;
-  }
+.menu button:hover {
+  background: #0056b3;
+}
+
+/* RESULTADOS */
+#resultados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 10px;
+}
+
+/* TARJETA */
+.sorteo {
+  background: white;
+  width: 95%;
+  max-width: 430px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  padding: 14px;
+}
+
+.destacado {
+  border: 3px solid orange;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  text-align: center;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.fecha {
+  font-size: 16px;
+  color: #444;
+}
+
+.pick3 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #1e7e34;
+}
+
+.pick4 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #5a189a;
+}
+
+.noche {
+  background: #fff3cd;
+  border-radius: 8px;
+  padding: 6px 0;
+}
+
+.dia {
+  background: #d1ecf1;
+  border-radius: 8px;
+  padding: 6px 0;
+}
 </style>
 </head>
 
 <body>
 
-<h2>Resultados Florida</h2>
+<h1>Resultados de Lotería</h1>
 
-<div id="resultados">Cargando resultados...</div>
+<div class="menu">
+  <button onclick="cargarLoteria('fl')">Florida</button>
+  <button onclick="cargarLoteria('ga')">Georgia</button>
+  <button onclick="cargarLoteria('ny')">New York</button>
+</div>
+
+<div id="resultados">Cargando . . .</div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+function cargarLoteria(codigo) {
+  document.getElementById("resultados").innerHTML = "Cargando...";
 
-  fetch("resultados_fl.json?v=" + Date.now())
-    .then(res => {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.text();
-    })
-    .then(text => {
-      const data = JSON.parse(text);
-      mostrarResultados(data);
-    })
-    .catch(err => {
-      console.error(err);
+  fetch(`data/resultados_${codigo}.json?v=${Date.now()}`)
+    .then(r => r.json())
+    .then(data => mostrarResultados(data))
+    .catch(() => {
       document.getElementById("resultados").innerHTML =
-        "<p>Error al cargar los resultados</p>";
+        "<p>Error cargando datos</p>";
     });
+}
 
-  function mostrarResultados(data) {
+function mostrarResultados(data) {
 
-    if (!Array.isArray(data) || data.length === 0) {
-      document.getElementById("resultados").innerHTML =
-        "<p>No hay resultados disponibles</p>";
-      return;
-    }
-
-    data.sort((a, b) => {
-      const fa = new Date(a.Fecha);
-      const fb = new Date(b.Fecha);
-      if (fb - fa !== 0) return fb - fa;
-      return a.DiaNoche === "Noche" ? -1 : 1;
-    });
-
-    let html = `
-      <table>
-        <thead>
-          <tr>
-            <th class="fecha">Fecha</th>
-            <th class="turno">Turno</th>
-            <th class="pick3">Pick 3</th>
-            <th class="pick4">Pick 4</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-
-    data.forEach((r, i) => {
-      html += `
-        <tr class="${i === 0 ? "destacado" : ""}">
-          <td>${new Date(r.Fecha).toLocaleDateString("es-ES")}</td>
-          <td>${r.DiaNoche}</td>
-          <td>${r.Pick3}</td>
-          <td>${r.Pick4}</td>
-        </tr>
-      `;
-    });
-
-    html += "</tbody></table>";
-    document.getElementById("resultados").innerHTML = html;
+  if (!Array.isArray(data) || data.length === 0) {
+    document.getElementById("resultados").innerHTML =
+      "<p>No hay resultados</p>";
+    return;
   }
 
+  const fechas = {};
+  data.forEach(r => {
+    if (!fechas[r.Fecha]) fechas[r.Fecha] = {};
+    fechas[r.Fecha][r.DiaNoche] = r; // Dia / Noche
+  });
+
+  const ordenadas = Object.keys(fechas)
+    .sort((a,b) => new Date(b) - new Date(a));
+
+  let html = "";
+
+  ordenadas.forEach((fecha, i) => {
+    const noche = fechas[fecha]["Noche"];
+    const dia   = fechas[fecha]["Dia"];
+
+    html += `
+      <div class="sorteo ${i === 0 ? "destacado" : ""}">
+        <div class="grid">
+          <div class="header">Noche</div>
+          <div class="header">Día</div>
+
+          <div class="noche fecha">${noche ? fechaFormateada(noche.Fecha) : "-"}</div>
+          <div class="dia fecha">${dia ? fechaFormateada(dia.Fecha) : "-"}</div>
+
+          <div class="noche pick3">${noche ? noche.Pick3 : "-"}</div>
+          <div class="dia pick3">${dia ? dia.Pick3 : "-"}</div>
+
+          <div class="noche pick4">${noche ? noche.Pick4 : "-"}</div>
+          <div class="dia pick4">${dia ? dia.Pick4 : "-"}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("resultados").innerHTML = html;
+}
+
+function fechaFormateada(f) {
+  return new Date(f).toLocaleDateString("es-ES");
+}
+
+// Florida por defecto
+document.addEventListener("DOMContentLoaded", () => {
+  cargarLoteria("fl");
 });
 </script>
 
