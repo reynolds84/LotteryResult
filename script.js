@@ -4,10 +4,20 @@
 <meta charset="UTF-8">
 <title>Resultados Florida</title>
 <style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+    color: red; /* encabezado en rojo */
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
-  text-align: center; /* Centra todo el contenido por defecto */
+    text-align: center; /* centra todo por defecto */
+    margin-top: 20px;
   }
 
   th {
@@ -97,6 +107,7 @@ function mostrarResultados(data) {
 
 </body>
 </html>
+
 
 
 
