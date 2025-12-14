@@ -106,11 +106,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Agrupar por fecha
+    // Agrupar por fecha y por turno
     const fechas = {};
     data.forEach(r => {
       if (!fechas[r.Fecha]) fechas[r.Fecha] = {};
-      fechas[r.Fecha][r.DiaNoche] = r;
+      // Usar nombre exacto del JSON
+      const turno = r.DiaNoche.trim(); // Noche o Dia
+      fechas[r.Fecha][turno] = r;
     });
 
     // Orden descendente por fecha
@@ -118,8 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let html = "";
     fechasOrdenadas.forEach((fecha, idx) => {
-      const noche = fechas[fecha]["Noche"];
-      const dia = fechas[fecha]["Día"];
+      const noche = fechas[fecha]["Noche"] || fechas[fecha]["noche"];
+      const dia   = fechas[fecha]["Dia"] || fechas[fecha]["dia"];
 
       html += `
         <div class="sorteo ${idx === 0 ? "destacado" : ""}">
