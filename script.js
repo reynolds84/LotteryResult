@@ -21,6 +21,16 @@ function mostrarResultados(data) {
     return;
   }
 
+  // Orden descendente por fecha y DiaNoche
+  data.sort((a, b) => {
+    const fechaA = new Date(a.Fecha);
+    const fechaB = new Date(b.Fecha);
+    if (fechaB - fechaA !== 0) return fechaB - fechaA;
+    if (a.DiaNoche === b.DiaNoche) return 0;
+    if (a.DiaNoche === "Noche") return -1;
+    return 1;
+  });
+
   let html = `
     <table border="1" cellpadding="6" style="width: 100%; border-collapse: collapse;">
       <thead>
@@ -37,7 +47,7 @@ function mostrarResultados(data) {
   data.forEach(r => {
     html += `
       <tr>
-        <td>${r.Fecha}</td>
+        <td>${new Date(r.Fecha).toLocaleDateString()}</td>
         <td>${r.DiaNoche}</td>
         <td>${r.Pick3}</td>
         <td>${r.Pick4}</td>
@@ -48,8 +58,6 @@ function mostrarResultados(data) {
   html += "</tbody></table>";
   document.getElementById("resultados").innerHTML = html;
 }
-
-
 
 
 
