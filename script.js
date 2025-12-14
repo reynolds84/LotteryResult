@@ -44,20 +44,20 @@ function mostrarResultados(data) {
       <tbody>
   `;
 
-  data.forEach(r => {
-    html += `
-      <tr>
-        <td>${new Date(r.Fecha).toLocaleDateString()}</td>
-        <td>${r.DiaNoche}</td>
-        <td>${r.Pick3}</td>
-        <td>${r.Pick4}</td>
-      </tr>
-    `;
-  });
-
+  data.forEach((r, index) => {
+  html += `
+    <tr style="${index === 0 ? 'background-color: orange; color: white;' : ''}">
+      <td>${new Date(r.Fecha).toLocaleDateString()}</td>
+      <td>${r.DiaNoche}</td>
+      <td>${r.Pick3}</td>
+      <td>${r.Pick4}</td>
+    </tr>
+  `;
+});
   html += "</tbody></table>";
   document.getElementById("resultados").innerHTML = html;
 }
+
 
 
 
