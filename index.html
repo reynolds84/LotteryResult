@@ -30,12 +30,21 @@ h1 {
 }
 
 .menu button {
-  padding: 14px 20px;
+  padding: 10px 20px;
   font-size: 18px;
   border: none;
   border-radius: 12px;
   color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
 }
 
 .menu button.activo {
@@ -74,16 +83,21 @@ h1 {
   grid-column: span 2;
   font-size: 20px;
   font-weight: bold;
-  
 }
 
-.turno {
-  font-size: 18px;
-  font-weight: bold;
-  color: #555;
-  text-align: center;
+.turno-img {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
 }
 
+.turno-img img {
+  width: 40px;
+  height: 40px;
+}
+
+/* NÚMEROS */
 .pick3 {
   font-size: 26px;
   font-weight: bold;
@@ -103,14 +117,26 @@ h1 {
 <h1>Resultados de Lotería</h1>
 
 <div class="menu">
-  <button class="btn-fl activo" onclick="cargarLoteria('fl')">Florida</button>
-  <button class="btn-ga" onclick="cargarLoteria('ga')">Georgia</button>
-  <button class="btn-ny" onclick="cargarLoteria('ny')">New York</button>
+  <button class="btn-fl activo" onclick="cargarLoteria('fl')">
+    <img src="https://ibb.co/HLHnqsjw" alt="Florida"> Florida
+  </button>
+  <button class="btn-ga" onclick="cargarLoteria('ga')">
+    <img src="https://ibb.co/RtTfTFf" alt="Georgia"> Georgia
+  </button>
+  <button class="btn-ny" onclick="cargarLoteria('ny')">
+    <img src="https://ibb.co/h1xc2hWL" alt="New York"> New York
+  </button>
 </div>
 
 <div id="resultados">Cargando...</div>
 
 <script>
+const turnoImgs = {
+  Dia: "https://ibb.co/HDqyGFHm",
+  Noche: "https://ibb.co/M5pzfXCB",
+  Medio: "https://ibb.co/5hh3LSn9" // Tarde
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   cargarLoteria('fl');
 });
@@ -125,14 +151,14 @@ function cargarLoteria(codigo) {
 
   fetch(`data/resultados_${codigo}.json?v=${Date.now()}`)
     .then(r => r.json())
-    .then(data => mostrarResultados(data, codigo))
+    .then(data => mostrarResultados(data))
     .catch(() => {
       document.getElementById("resultados").innerHTML =
         "<p>Error al cargar los datos</p>";
     });
 }
 
-function mostrarResultados(data, codigo) {
+function mostrarResultados(data) {
 
   if (!Array.isArray(data) || data.length === 0) {
     document.getElementById("resultados").innerHTML =
@@ -140,32 +166,20 @@ function mostrarResultados(data, codigo) {
     return;
   }
 
-  /*const ordenTurnos = {
-    fl: ["Noche", "Dia"],
-    ga: ["Noche", "Medio", "Dia"],
-    ny: ["Noche", "Medio"]
-  };
-
-  data.sort((a, b) => {
-    const fa = new Date(a.Fecha);
-    const fb = new Date(b.Fecha);
-    if (fb - fa !== 0) return fb - fa;
-
-    return ordenTurnos[codigo].indexOf(a.DiaNoche) -
-           ordenTurnos[codigo].indexOf(b.DiaNoche);
-  });*/
-
   let html = "";
 
   data.forEach(r => {
+    const turno = r.DiaNoche === "Medio" ? "Medio" : r.DiaNoche;
+    const imgTurno = turnoImgs[turno] || "";
+
     html += `
       <div class="sorteo">
         <div class="sorteo-grid">
           <div class="fecha">
             ${new Date(r.Fecha).toLocaleDateString("es-ES")}
           </div>
-          <div class="turno">
-            ${r.DiaNoche === "Medio" ? "Tarde" : r.DiaNoche}
+          <div class="turno-img">
+            <img src="${imgTurno}" alt="${turno}">
           </div>
           <div></div>
           <div class="pick3">${r.Pick3 ?? "-"}</div>
@@ -181,7 +195,3 @@ function mostrarResultados(data, codigo) {
 
 </body>
 </html>
-
-
-
-
