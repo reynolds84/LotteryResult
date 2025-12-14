@@ -23,7 +23,7 @@
   th {
     padding: 6px;
     color: white;
-    text-align: center; /* Centra los encabezados */
+    text-align: center;
   }
 
   th.fecha { background-color: #ff6600; }
@@ -43,6 +43,8 @@
 </style>
 </head>
 <body>
+
+<h1>Resultados Lotería Florida</h1>
 
 <div id="resultados"></div>
 
@@ -107,6 +109,8 @@ function mostrarResultados(data) {
 
 </body>
 </html>
+
+
 
 
 
