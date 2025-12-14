@@ -32,17 +32,17 @@ function mostrarResultados(data) {
   });
 
   let html = `
-    <table border="1" cellpadding="6" style="width: 100%; border-collapse: collapse;">
-      <thead>
-        <tr style="background-color: #007bff; color: white;">
-          <th>Fecha</th>
-          <th>Turno</th>
-          <th>Pick 3</th>
-          <th>Pick 4</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
+  <table border="1" cellpadding="6" style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="background-color: #ff6600; color: white;">Fecha</th>
+        <th style="background-color: #007bff; color: white;">Turno</th>
+        <th style="background-color: #28a745; color: white;">Pick 3</th>
+        <th style="background-color: #6f42c1; color: white;">Pick 4</th>
+      </tr>
+    </thead>
+    <tbody>
+`;
 
   data.forEach((r, index) => {
   html += `
@@ -57,6 +57,7 @@ function mostrarResultados(data) {
   html += "</tbody></table>";
   document.getElementById("resultados").innerHTML = html;
 }
+
 
 
 
