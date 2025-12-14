@@ -36,7 +36,8 @@
 
 <script>
 // URL de tu archivo JSON en GitHub
-const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main/resultados_fl.json";
+//const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main/resultados_fl.json";
+const jsonUrl = "https://reynolds84.github.io/LotteryResult/resultados_fl.json";
 
 // Cargar el archivo JSON desde GitHub
 fetch(jsonUrl)
@@ -95,3 +96,4 @@ function mostrarResultados(data) {
 
 </body>
 </html>
+
