@@ -1,58 +1,56 @@
-const SUPABASE_URL = "https://cjwkmtqpzvkpxjlfcyzg.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqd2ttdHFwenZrcHhqbGZjeXpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwNDEwMDMsImV4cCI6MjA3NTYxNzAwM30.vFwABypAsnw15vMpo3_A--ayRwUkq6iQJYUXBbbQxs8";
+// URL de tu archivo JSON en GitHub (reemplaza TU_USUARIO y TU_REPOSITORIO)
+const jsonUrl = "https://raw.githubusercontent.com/reynolds84/LotteryResult/main/resultados_fl.json";
 
-// --- OBTENER DATOS DE SUPABASE ---
-fetch
-(
-    `${SUPABASE_URL}/rest/v1/Result?select=fecha,dia_noche,pick3,pick4,lottery&order=fecha.desc, dia_noche.desc&limit=60`,
-    {
-    headers: 
-    {
-        apikey: SUPABASE_KEY,
-        Authorization: `Bearer ${SUPABASE_KEY}`
-    }
-})
-.then(res => res.json())
-.then(data => {
-    if (data.length === 0) {
-        document.getElementById("Result").innerHTML = "<p>No hay resultados todavía</p>";
-        return;
-    }
+// Cargar el archivo JSON desde GitHub
+fetch(jsonUrl)
+  .then(res => res.json())  // Convierte la respuesta en JSON
+  .then(data => {
+    mostrarResultados(data);  // Llama a la función para mostrar los resultados
+  })
+  .catch(err => {
+    console.error("Error al cargar el JSON", err);
+    document.getElementById("resultados").innerHTML = "<p>Error al cargar los resultados</p>";
+  });
 
-    // Crear tabla HTML
-    let html = `
-        <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%; max-width: 600px; margin: auto;">
-            <tr style="background-color: #007bff; color: white;">
-                <th>Fecha</th>
-                <th>Turno</th>
-                <th>Pick 3</th>
-                <th>Pick 4</th>
-                <th>Lottery</th>
-            </tr>
+// Función para mostrar los resultados en una tabla
+function mostrarResultados(data) {
+  // Verificar que los datos son válidos
+  if (!data || !data.resultados || data.resultados.length === 0) {
+    document.getElementById("resultados").innerHTML = "<p>No hay resultados disponibles</p>";
+    return;
+  }
+
+  // Crear la tabla de resultados
+  let html = `
+    <table border="1" cellpadding="6" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #007bff; color: white;">
+          <th>Fecha</th>
+          <th>Turno</th>
+          <th>Pick 3</th>
+          <th>Pick 4</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  // Recorrer los resultados y agregar filas a la tabla
+  data.resultados.forEach(r => {
+    html += `
+      <tr>
+        <td>${r.fecha}</td>
+        <td>${r.dia_noche}</td>
+        <td>${r.pick3}</td>
+        <td>${r.pick4}</td>
+      </tr>
     `;
+  });
 
-    data.forEach(r => {
-        html += `
-            <tr>
-                <td>${r.fecha}</td>
-                <td>${r.dia_noche}</td>
-                <td>${r.pick3}</td>
-                <td>${r.pick4}</td>
-                <td>${r.lottery}</td>
-            </tr>
-        `;
-    });
+  html += "</tbody></table>";
 
-    html += "</table>";
-
-    document.getElementById("Result").innerHTML = html;
-})
-.catch(err => {
-    console.error(err);
-    document.getElementById("Result").innerHTML = "<p>Error cargando resultados</p>";
-});
-
-
+  // Insertar la tabla en la página
+  document.getElementById("resultados").innerHTML = html;
+}
 
 
 
