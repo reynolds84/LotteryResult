@@ -1,63 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Resultados Lotería Florida</title>
+<meta charset="UTF-8">
+<title>Resultados Lotería Florida</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
 
-  <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
+h1 {
+  text-align: center;
+  color: red;
+  margin: 20px 0;
+}
 
-  /* Encabezado de la página */
-  h1 {
-    text-align: center;
-    color: red;
-    margin-top: 20px;
-  }
+#resultados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+}
 
-  /* Tabla */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center; /* centra todo por defecto */
-    margin-top: 20px;
-  }
+/* Tarjeta del sorteo */
+.sorteo {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 10px;
+  width: 320px;
+}
 
-  /* Encabezados con colores distintos */
-  th {
-    padding: 6px;
-    color: white;
-    text-align: center;
-  }
+/* Grid interno: 4 filas, 2 columnas */
+.sorteo .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dos columnas: Noche y Día */
+  row-gap: 5px;
+  text-align: center;
+}
 
-  th.fecha { background-color: #ff6600; }
-  th.turno { background-color: #007bff; }
-  th.pick3 { background-color: #28a745; }
-  th.pick4 { background-color: #6f42c1; }
+/* Encabezados de fila */
+.sorteo .grid .header {
+  font-weight: bold;
+  color: #333;
+}
 
-  /* Celdas centradas */
-  td {
-    padding: 6px;
-    text-align: center;
-  }
+/* Noche y Día colores */
+.noche {
+  background-color: #ffecb3;
+  border-radius: 4px;
+  padding: 3px 0;
+}
 
-  /* Fila más reciente */
-  tr.destacado {
-    background-color: orange;
-    color: white;
-  }
+.dia {
+  background-color: #cce5ff;
+  border-radius: 4px;
+  padding: 3px 0;
+}
+
+/* Pick3 y Pick4 colores */
+.noche .pick3 { color: #28a745; font-weight: bold; }
+.noche .pick4 { color: #6f42c1; font-weight: bold; }
+
+.dia .pick3 { color: #155724; font-weight: bold; }
+.dia .pick4 { color: #721c24; font-weight: bold; }
+
+/* Sorteo destacado */
+.sorteo.destacado {
+  border: 2px solid orange;
+}
 </style>
 </head>
 <body>
 
-  <h1>Resultados Lotería Florida</h1>
+<h1>Resultados Lotería Florida</h1>
 
-  <div id="resultados">Cargando resultados...</div>
+<div id="resultados">Cargando resultados...</div>
 
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
   fetch("resultados_fl.json?v=" + Date.now())
     .then(res => {
@@ -82,48 +106,49 @@
       return;
     }
 
-    data.sort((a, b) => {
-      const fa = new Date(a.Fecha);
-      const fb = new Date(b.Fecha);
-      if (fb - fa !== 0) return fb - fa;
-      return a.DiaNoche === "Noche" ? -1 : 1;
+    // Agrupar por fecha
+    const fechas = {};
+    data.forEach(r => {
+      if (!fechas[r.Fecha]) fechas[r.Fecha] = {};
+      fechas[r.Fecha][r.DiaNoche] = r;
     });
 
-    let html = `
-      <table>
-        <thead>
-          <tr>
-            <th class="fecha">Fecha</th>
-            <th class="turno">Turno</th>
-            <th class="pick3">Pick 3</th>
-            <th class="pick4">Pick 4</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
+    // Orden descendente por fecha
+    const fechasOrdenadas = Object.keys(fechas).sort((a,b) => new Date(b) - new Date(a));
 
-    data.forEach((r, i) => {
+    let html = "";
+    fechasOrdenadas.forEach((fecha, idx) => {
+      const noche = fechas[fecha]["Noche"];
+      const dia = fechas[fecha]["Día"];
+
       html += `
-        <tr class="${i === 0 ? "destacado" : ""}">
-          <td>${new Date(r.Fecha).toLocaleDateString("es-ES")}</td>
-          <td>${r.DiaNoche}</td>
-          <td>${r.Pick3}</td>
-          <td>${r.Pick4}</td>
-        </tr>
+        <div class="sorteo ${idx === 0 ? "destacado" : ""}">
+          <div class="grid">
+            <!-- Encabezados -->
+            <div class="header">Noche</div>
+            <div class="header">Día</div>
+
+            <!-- Fecha -->
+            <div class="noche">${noche ? new Date(noche.Fecha).toLocaleDateString("es-ES") : "-"}</div>
+            <div class="dia">${dia ? new Date(dia.Fecha).toLocaleDateString("es-ES") : "-"}</div>
+
+            <!-- Pick3 -->
+            <div class="noche pick3">${noche ? noche.Pick3 : "-"}</div>
+            <div class="dia pick3">${dia ? dia.Pick3 : "-"}</div>
+
+            <!-- Pick4 -->
+            <div class="noche pick4">${noche ? noche.Pick4 : "-"}</div>
+            <div class="dia pick4">${dia ? dia.Pick4 : "-"}</div>
+          </div>
+        </div>
       `;
     });
 
-    html += "</tbody></table>";
     document.getElementById("resultados").innerHTML = html;
   }
 
 });
 </script>
 
- 
-  
 </body>
 </html>
-
-
-
