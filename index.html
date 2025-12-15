@@ -51,10 +51,26 @@ h1 {
   box-shadow: 0 0 0 3px rgba(0,0,0,0.3);
 }
 
-/* COLORES */
-.btn-fl { background: #dc3545; } /* rojo */
-.btn-ga { background: #fd7e14; } /* naranja */
-.btn-ny { background: #007bff; } /* azul */
+/* COLORES BOTONES */
+.btn-fl { background: #dc3545; }
+.btn-ga { background: #fd7e14; }
+.btn-ny { background: #007bff; }
+
+/* TEXTO ESTADO SELECCIONADO */
+.estado {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin: 10px 0 20px 0;
+  letter-spacing: 2px;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.estado.fl { color: #dc3545; }
+.estado.ga { color: #fd7e14; }
+.estado.ny { color: #007bff; }
 
 /* CONTENEDOR */
 #resultados {
@@ -93,23 +109,21 @@ h1 {
 }
 
 .turno-img img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 /* NÚMEROS */
 .pick3 {
-  font-size: 35px;
+  font-size: 45px;
   font-weight: bold;
   color: #28a745;
-  align-items: center;  
 }
 
 .pick4 {
-  font-size: 35px;
+  font-size: 45px;
   font-weight: bold;
   color: #6f42c1;
-  align-items: center;  
 }
 </style>
 </head>
@@ -120,15 +134,18 @@ h1 {
 
 <div class="menu">
   <button class="btn-fl activo" onclick="cargarLoteria('fl')">
-    <img src="https://i.ibb.co/fVx4H5s6/fl-sf.png" alt="Florida"> Florida
+    <img src="https://i.ibb.co/fVx4H5s6/fl-sf.png"> Florida
   </button>
   <button class="btn-ga" onclick="cargarLoteria('ga')">
-    <img src="https://i.ibb.co/sc9n9fn/ga-sf.png" alt="Georgia"> Georgia
+    <img src="https://i.ibb.co/sc9n9fn/ga-sf.png"> Georgia
   </button>
   <button class="btn-ny" onclick="cargarLoteria('ny')">
-    <img src="https://i.ibb.co/G3f9CB2n/ny-sf.png" alt="New York"> New York
+    <img src="https://i.ibb.co/G3f9CB2n/ny-sf.png"> New York
   </button>
 </div>
+
+<!-- TEXTO CAMBIANTE -->
+<div id="estadoSeleccionado" class="estado fl">Florida</div>
 
 <div id="resultados">Cargando...</div>
 
@@ -136,7 +153,13 @@ h1 {
 const turnoImgs = {
   Dia: "https://i.ibb.co/svq4smVL/day.png",
   Noche: "https://i.ibb.co/JF2Yqhs3/noche.png",
-  Medio: "https://i.ibb.co/1JwnStXg/tarde.png" // Tarde
+  Medio: "https://i.ibb.co/1JwnStXg/tarde.png"
+};
+
+const nombres = {
+  fl: "Florida",
+  ga: "Georgia",
+  ny: "New York"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -145,9 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function cargarLoteria(codigo) {
 
+  // Botón activo
   document.querySelectorAll(".menu button")
     .forEach(b => b.classList.remove("activo"));
   document.querySelector(".btn-" + codigo).classList.add("activo");
+
+  // Texto debajo del menú
+  const estado = document.getElementById("estadoSeleccionado");
+  estado.textContent = nombres[codigo];
+  estado.className = "estado " + codigo;
 
   document.getElementById("resultados").innerHTML = "Cargando...";
 
@@ -181,7 +210,7 @@ function mostrarResultados(data) {
             ${new Date(r.Fecha).toLocaleDateString("es-ES")}
           </div>
           <div class="turno-img">
-            <img src="${imgTurno}" alt="${turno}">
+            <img src="${imgTurno}">
           </div>
           <div class="pick3">${r.Pick3 ?? "-"}</div>
           <div class="pick4">${r.Pick4 ?? "-"}</div>
@@ -196,11 +225,3 @@ function mostrarResultados(data) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
