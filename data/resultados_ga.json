@@ -1,6 +1,12 @@
 [
   {
     "Fecha": "2025-12-24T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "309",
+    "Pick4": "4563"
+  },
+  {
+    "Fecha": "2025-12-24T00:00:00",
     "DiaNoche": "Medio",
     "Pick3": "761",
     "Pick4": "7369"
@@ -550,11 +556,5 @@
     "DiaNoche": "Dia",
     "Pick3": "744",
     "Pick4": "0439"
-  },
-  {
-    "Fecha": "2025-11-23T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "987",
-    "Pick4": "7640"
   }
 ]
