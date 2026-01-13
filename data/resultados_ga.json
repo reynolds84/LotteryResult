@@ -1,5 +1,41 @@
 [
   {
+    "Fecha": "2026-01-13T00:00:00",
+    "DiaNoche": "Dia",
+    "Pick3": "259",
+    "Pick4": "6478"
+  },
+  {
+    "Fecha": "2026-01-12T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "884",
+    "Pick4": "4170"
+  },
+  {
+    "Fecha": "2026-01-12T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "075",
+    "Pick4": "6214"
+  },
+  {
+    "Fecha": "2026-01-12T00:00:00",
+    "DiaNoche": "Dia",
+    "Pick3": "777",
+    "Pick4": "8463"
+  },
+  {
+    "Fecha": "2026-01-11T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "932",
+    "Pick4": "6391"
+  },
+  {
+    "Fecha": "2026-01-11T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "218",
+    "Pick4": "9823"
+  },
+  {
     "Fecha": "2026-01-11T00:00:00",
     "DiaNoche": "Dia",
     "Pick3": "499",
@@ -520,41 +556,5 @@
     "DiaNoche": "Medio",
     "Pick3": "688",
     "Pick4": "0929"
-  },
-  {
-    "Fecha": "2025-12-13T00:00:00",
-    "DiaNoche": "Dia",
-    "Pick3": "037",
-    "Pick4": "5220"
-  },
-  {
-    "Fecha": "2025-12-12T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "858",
-    "Pick4": "4342"
-  },
-  {
-    "Fecha": "2025-12-12T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "284",
-    "Pick4": "2796"
-  },
-  {
-    "Fecha": "2025-12-12T00:00:00",
-    "DiaNoche": "Dia",
-    "Pick3": "479",
-    "Pick4": "8063"
-  },
-  {
-    "Fecha": "2025-12-11T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "635",
-    "Pick4": "3879"
-  },
-  {
-    "Fecha": "2025-12-11T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "478",
-    "Pick4": "7908"
   }
 ]
