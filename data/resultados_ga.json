@@ -1,5 +1,11 @@
 [
   {
+    "Fecha": "2026-02-12T00:00:00",
+    "DiaNoche": "Dia",
+    "Pick3": "572",
+    "Pick4": "1026"
+  },
+  {
     "Fecha": "2026-02-11T00:00:00",
     "DiaNoche": "Noche",
     "Pick3": "870",
@@ -550,11 +556,5 @@
     "DiaNoche": "Medio",
     "Pick3": "075",
     "Pick4": "6214"
-  },
-  {
-    "Fecha": "2026-01-12T00:00:00",
-    "DiaNoche": "Dia",
-    "Pick3": "777",
-    "Pick4": "8463"
   }
 ]
