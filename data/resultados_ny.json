@@ -1,5 +1,53 @@
 [
   {
+    "Fecha": "2026-02-19T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "768",
+    "Pick4": "2294"
+  },
+  {
+    "Fecha": "2026-02-19T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "501",
+    "Pick4": "6903"
+  },
+  {
+    "Fecha": "2026-02-18T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "428",
+    "Pick4": "8244"
+  },
+  {
+    "Fecha": "2026-02-18T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "954",
+    "Pick4": "7213"
+  },
+  {
+    "Fecha": "2026-02-17T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "231",
+    "Pick4": "4035"
+  },
+  {
+    "Fecha": "2026-02-17T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "578",
+    "Pick4": "8217"
+  },
+  {
+    "Fecha": "2026-02-16T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "233",
+    "Pick4": "4254"
+  },
+  {
+    "Fecha": "2026-02-16T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "423",
+    "Pick4": "1925"
+  },
+  {
     "Fecha": "2026-02-15T00:00:00",
     "DiaNoche": "Noche",
     "Pick3": "759",
@@ -322,53 +370,5 @@
     "DiaNoche": "Medio",
     "Pick3": "479",
     "Pick4": "0905"
-  },
-  {
-    "Fecha": "2026-01-19T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "440",
-    "Pick4": "1959"
-  },
-  {
-    "Fecha": "2026-01-19T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "769",
-    "Pick4": "3971"
-  },
-  {
-    "Fecha": "2026-01-18T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "094",
-    "Pick4": "9195"
-  },
-  {
-    "Fecha": "2026-01-18T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "682",
-    "Pick4": "1501"
-  },
-  {
-    "Fecha": "2026-01-17T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "285",
-    "Pick4": "9988"
-  },
-  {
-    "Fecha": "2026-01-17T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "904",
-    "Pick4": "0804"
-  },
-  {
-    "Fecha": "2026-01-16T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "496",
-    "Pick4": "8072"
-  },
-  {
-    "Fecha": "2026-01-16T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "539",
-    "Pick4": "8350"
   }
 ]
