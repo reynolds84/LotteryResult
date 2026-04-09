@@ -1,5 +1,17 @@
 [
   {
+    "Fecha": "2026-04-08T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "599",
+    "Pick4": "6332"
+  },
+  {
+    "Fecha": "2026-04-08T00:00:00",
+    "DiaNoche": "Dia",
+    "Pick3": "099",
+    "Pick4": "2183"
+  },
+  {
     "Fecha": "2026-04-07T00:00:00",
     "DiaNoche": "Noche",
     "Pick3": "375",
@@ -358,17 +370,5 @@
     "DiaNoche": "Dia",
     "Pick3": "383",
     "Pick4": "2876"
-  },
-  {
-    "Fecha": "2026-03-08T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "889",
-    "Pick4": "5998"
-  },
-  {
-    "Fecha": "2026-03-08T00:00:00",
-    "DiaNoche": "Dia",
-    "Pick3": "211",
-    "Pick4": "4653"
   }
 ]
