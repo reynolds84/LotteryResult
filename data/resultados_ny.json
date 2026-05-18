@@ -1,5 +1,185 @@
 [
   {
+    "Fecha": "2026-05-17T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "981",
+    "Pick4": "4092"
+  },
+  {
+    "Fecha": "2026-05-17T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "999",
+    "Pick4": "2746"
+  },
+  {
+    "Fecha": "2026-05-16T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "781",
+    "Pick4": "2930"
+  },
+  {
+    "Fecha": "2026-05-16T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "391",
+    "Pick4": "6050"
+  },
+  {
+    "Fecha": "2026-05-15T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "169",
+    "Pick4": "4158"
+  },
+  {
+    "Fecha": "2026-05-15T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "905",
+    "Pick4": "3616"
+  },
+  {
+    "Fecha": "2026-05-14T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "228",
+    "Pick4": "7017"
+  },
+  {
+    "Fecha": "2026-05-14T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "113",
+    "Pick4": "3691"
+  },
+  {
+    "Fecha": "2026-05-13T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "465",
+    "Pick4": "2216"
+  },
+  {
+    "Fecha": "2026-05-13T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "003",
+    "Pick4": "0884"
+  },
+  {
+    "Fecha": "2026-05-12T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "846",
+    "Pick4": "2400"
+  },
+  {
+    "Fecha": "2026-05-12T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "096",
+    "Pick4": "5757"
+  },
+  {
+    "Fecha": "2026-05-11T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "599",
+    "Pick4": "9104"
+  },
+  {
+    "Fecha": "2026-05-11T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "533",
+    "Pick4": "9076"
+  },
+  {
+    "Fecha": "2026-05-10T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "657",
+    "Pick4": "5598"
+  },
+  {
+    "Fecha": "2026-05-10T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "211",
+    "Pick4": "5163"
+  },
+  {
+    "Fecha": "2026-05-09T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "796",
+    "Pick4": "1823"
+  },
+  {
+    "Fecha": "2026-05-09T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "732",
+    "Pick4": "4888"
+  },
+  {
+    "Fecha": "2026-05-08T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "717",
+    "Pick4": "9673"
+  },
+  {
+    "Fecha": "2026-05-08T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "397",
+    "Pick4": "1792"
+  },
+  {
+    "Fecha": "2026-05-07T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "161",
+    "Pick4": "1918"
+  },
+  {
+    "Fecha": "2026-05-07T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "614",
+    "Pick4": "1059"
+  },
+  {
+    "Fecha": "2026-05-06T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "402",
+    "Pick4": "2653"
+  },
+  {
+    "Fecha": "2026-05-06T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "319",
+    "Pick4": "5954"
+  },
+  {
+    "Fecha": "2026-05-05T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "745",
+    "Pick4": "7556"
+  },
+  {
+    "Fecha": "2026-05-05T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "531",
+    "Pick4": "4734"
+  },
+  {
+    "Fecha": "2026-05-04T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "892",
+    "Pick4": "7205"
+  },
+  {
+    "Fecha": "2026-05-04T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "294",
+    "Pick4": "5328"
+  },
+  {
+    "Fecha": "2026-05-03T00:00:00",
+    "DiaNoche": "Noche",
+    "Pick3": "931",
+    "Pick4": "5166"
+  },
+  {
+    "Fecha": "2026-05-03T00:00:00",
+    "DiaNoche": "Medio",
+    "Pick3": "458",
+    "Pick4": "5751"
+  },
+  {
     "Fecha": "2026-05-02T00:00:00",
     "DiaNoche": "Noche",
     "Pick3": "586",
@@ -190,185 +370,5 @@
     "DiaNoche": "Medio",
     "Pick3": "604",
     "Pick4": "5081"
-  },
-  {
-    "Fecha": "2026-04-16T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "793",
-    "Pick4": "6976"
-  },
-  {
-    "Fecha": "2026-04-16T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "825",
-    "Pick4": "9481"
-  },
-  {
-    "Fecha": "2026-04-15T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "333",
-    "Pick4": "9708"
-  },
-  {
-    "Fecha": "2026-04-15T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "123",
-    "Pick4": "4542"
-  },
-  {
-    "Fecha": "2026-04-14T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "381",
-    "Pick4": "4630"
-  },
-  {
-    "Fecha": "2026-04-14T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "460",
-    "Pick4": "2507"
-  },
-  {
-    "Fecha": "2026-04-13T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "458",
-    "Pick4": "1595"
-  },
-  {
-    "Fecha": "2026-04-13T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "775",
-    "Pick4": "7305"
-  },
-  {
-    "Fecha": "2026-04-12T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "216",
-    "Pick4": "8531"
-  },
-  {
-    "Fecha": "2026-04-12T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "598",
-    "Pick4": "7888"
-  },
-  {
-    "Fecha": "2026-04-11T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "983",
-    "Pick4": "4918"
-  },
-  {
-    "Fecha": "2026-04-11T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "756",
-    "Pick4": "8093"
-  },
-  {
-    "Fecha": "2026-04-10T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "789",
-    "Pick4": "7189"
-  },
-  {
-    "Fecha": "2026-04-10T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "433",
-    "Pick4": "0852"
-  },
-  {
-    "Fecha": "2026-04-09T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "132",
-    "Pick4": "8448"
-  },
-  {
-    "Fecha": "2026-04-09T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "365",
-    "Pick4": "2022"
-  },
-  {
-    "Fecha": "2026-04-08T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "736",
-    "Pick4": "8158"
-  },
-  {
-    "Fecha": "2026-04-08T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "116",
-    "Pick4": "6222"
-  },
-  {
-    "Fecha": "2026-04-07T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "236",
-    "Pick4": "0699"
-  },
-  {
-    "Fecha": "2026-04-07T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "279",
-    "Pick4": "8447"
-  },
-  {
-    "Fecha": "2026-04-06T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "519",
-    "Pick4": "3832"
-  },
-  {
-    "Fecha": "2026-04-06T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "238",
-    "Pick4": "3330"
-  },
-  {
-    "Fecha": "2026-04-05T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "838",
-    "Pick4": "3605"
-  },
-  {
-    "Fecha": "2026-04-05T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "090",
-    "Pick4": "8940"
-  },
-  {
-    "Fecha": "2026-04-04T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "292",
-    "Pick4": "2725"
-  },
-  {
-    "Fecha": "2026-04-04T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "169",
-    "Pick4": "4073"
-  },
-  {
-    "Fecha": "2026-04-03T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "119",
-    "Pick4": "8921"
-  },
-  {
-    "Fecha": "2026-04-03T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "956",
-    "Pick4": "5624"
-  },
-  {
-    "Fecha": "2026-04-02T00:00:00",
-    "DiaNoche": "Noche",
-    "Pick3": "741",
-    "Pick4": "6224"
-  },
-  {
-    "Fecha": "2026-04-02T00:00:00",
-    "DiaNoche": "Medio",
-    "Pick3": "881",
-    "Pick4": "7633"
   }
 ]
